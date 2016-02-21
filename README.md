@@ -3,9 +3,10 @@
 ##Show flipped components:
 ![](Flippedcomponents.png)
 
-Composite glyphs inherit anchors from any components. Flipping components means that for example, top anchors end up at the bottom or right-side anchors end up on the left. This plugin will highlight any flipped components with a pink outline, and flipped components with anchors in orange, so you can manually define explicit anchors in such composites. Compatible with Glyphs 2.3 and later.
+21/02/16 Composite glyphs inherit anchors from any components. Flipping components means that for example, top anchors end up at the bottom or right-side anchors end up on the left. This plugin will highlight any flipped components with a pink outline, and flipped components with anchors in orange, so you can manually define explicit anchors in such composites. Compatible with Glyphs 2.3 and later.
 
 ##Report flipped components:
+
 
 This macro will generate a list of all glyphs with flipped components in all masters, and will open a new tab showing all these glyphs.
 
@@ -20,8 +21,6 @@ This macro will generate a list of all glyphs with flipped components in all mas
 This little Python script will add _top anchors to all selected (mark) glyphs at the coordinates specified in each master listed. Adapt anchor names, coordinates and master names as required.
 
 22/10/15 This version rewritten by @mekkablue, thanks Erich!
-
-
 
 ##Zero width
 
