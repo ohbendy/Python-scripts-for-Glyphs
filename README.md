@@ -4,7 +4,7 @@
 
 ![](MasterNameImage.png)
 
-21/02/16 A reporter plugin to show the name of the current master in the Edit view, above the top of the glyph's bounding box. Handy for situations where masters are so close in weight that edits can unwittingly be made to the wrong master. The plugin also shows a small representation of the current glyph, handy to keep in view for unfamiliar scripts as the background image disappears as soon as paths are drawn.
+21/02/16 A reporter plugin to show the name of the current master in the Edit view, above the top of the glyph's bounding box. Handy for situations where masters are so close in weight that edits can unwittingly be made to the wrong master. The plugin also shows a small representation of the current glyph, handy to keep in view for unfamiliar scripts as the background image disappears as soon as paths are drawn. Compatible with Glyphs 2.3 and later.
 
 
 
