@@ -1,6 +1,6 @@
 # Python-scripts-for-Glyphs
 
-- Show master name and glyph
+- Show master name and glyph:
 
 ![](MasterNameImage.png)
 
