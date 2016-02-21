@@ -1,5 +1,11 @@
 # Python-scripts-for-Glyphs
 
+- Show master name and glyph
+
+21/02/16 This plugin shows the name of the current master open in the Edit view, above the top of the glyph's bounding box. Handy for situations where masters are so close in weight that edits can unwittingly be made to the wrong master. The plugin also shows a small representation of the current glyph, handy to keep in view for unfamiliar scripts as the background image disappears as soon as paths are drawn.
+
+
+
 - Place anchors in all masters
 
 This little Python script will add _top anchors to all selected (mark) glyphs at the coordinates specified in each master listed. Adapt anchor names, coordinates and master names as required.
