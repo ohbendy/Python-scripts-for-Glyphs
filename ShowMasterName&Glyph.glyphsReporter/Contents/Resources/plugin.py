@@ -21,21 +21,14 @@ class ShowMasterNameAndGlyph(ReporterPlugin):
 		
 	def foreground(self, layer):
 		currentScale = self.getScale()
-		textSize = 12.0 + currentScale*6
+		textSize = 10 + currentScale * 4
 		masterName = layer.associatedFontMaster().name
-		if layer.width <1:
-			textX = (layer.bounds.origin.x+(0.5*layer.bounds.size.width))
-		else:
-			textX = (layer.width/2)
-		textY = (layer.bounds.origin.y+layer.bounds.size.height)+84
 		self.drawTextAtPoint(
 			masterName, 
-			NSPoint(textX, textY),
+			NSPoint(self.textX, self.textY + ((16 + currentScale * 6) / currentScale)),
 			fontSize=textSize,
 			align = "bottomcenter",
-			fontColor=NSColor.colorWithCalibratedRed_green_blue_alpha_(
-				0.1 , 0.7 , 0.5, 0.5
-			),
+			fontColor=NSColor.colorWithCalibratedRed_green_blue_alpha_(0.1 , 0.7 , 0.5, 0.5)
 		)
 		
 		thisGlyph = layer.parent
@@ -46,30 +39,24 @@ class ShowMasterNameAndGlyph(ReporterPlugin):
 		
 		self.drawTextAtPoint(
 			textToDisplay,
-			NSPoint(textX,textY-19),
-			fontSize=textSize*1.3,
-			align = "center",
-			fontColor=NSColor.colorWithCalibratedRed_green_blue_alpha_(
-				0.1 , 0.8 , 0.7, 0.8
-			),
+			NSPoint(self.textX, self.textY),
+			fontSize=textSize * 1.3,
+			align = "bottomcenter",
+			fontColor=NSColor.colorWithCalibratedRed_green_blue_alpha_(0.1 , 0.8 , 0.7, 0.8)
 		)
 		
-	def background (self, layer):
-		if layer.bounds:
-			if layer.width <1:
-				centerX = (layer.bounds.origin.x+(0.5*layer.bounds.size.width))
-			else:
-				centerX = (layer.width/2)
-			centerY = (layer.bounds.origin.y+layer.bounds.size.height)+64
-			currentScale = self.getScale()
-			rectSize = 1/4*currentScale+24
-			rectOrigin = NSPoint(centerX-0.5*rectSize, centerY-0.5*rectSize)
-			rectSize = NSSize(
-				rectSize,
-				rectSize
-			)
-			rect = NSRect(rectOrigin, rectSize)
-			NSColor.colorWithCalibratedRed_green_blue_alpha_(
-				0.55 , 0.51 , 0.48, 0.2
-			).set()
-			NSBezierPath.bezierPathWithOvalInRect_(rect).fill()
+	def background(self, layer):
+		if layer.width < 1:
+			self.textX = (layer.bounds.origin.x + (0.5 * layer.bounds.size.width))
+		else:
+			self.textX = (layer.width / 2)
+		self.textY = max((layer.bounds.origin.y + layer.bounds.size.height), layer.glyphMetrics()[1])
+		
+		currentScale = self.getScale()
+		rectSize = (20 + currentScale * 4) / currentScale
+		rectOrigin = NSPoint(self.textX - 0.5 * rectSize, self.textY - 0.05 * rectSize)
+		rectSize = NSSize(rectSize, rectSize)
+		rect = NSRect(rectOrigin, rectSize)
+		NSColor.colorWithCalibratedRed_green_blue_alpha_(0.55 , 0.51 , 0.48, 0.2).set()
+		NSBezierPath.bezierPathWithOvalInRect_(rect).fill()
+		print "__rect", rect
