@@ -30,16 +30,7 @@ class ShowFlippedComponents(ReporterPlugin):
 				thisTransformation = component.transform
 				if thisTransformation [0] < 0.0 or thisTransformation [3] < 0.0:
 					if component.componentLayer().anchors:
-						NSColor.colorWithCalibratedRed_green_blue_alpha_(
-							0.75 , 0.71 , 0.68, 0.6
-						).set()
-						component.bezierPath.fill()
-						NSColor.colorWithCalibratedRed_green_blue_alpha_(
-							1.0 , 0.35 , 0.0, 0.75
-						).set()
-						bezierpath = component.bezierPath
-						bezierpath.setLineWidth_(6)
-						bezierpath.stroke()
+						
 						textX=component.bounds.origin.x+0.5*component.bounds.size.width
 						textY=component.bounds.origin.y+0.5*component.bounds.size.height
 						currentScale = self.getScale()
@@ -53,18 +44,19 @@ class ShowFlippedComponents(ReporterPlugin):
 								0.55 , 0.51 , 0.48, 0.5
 							),
 						)
-					else:
+						
 						NSColor.colorWithCalibratedRed_green_blue_alpha_(
 							0.75 , 0.71 , 0.68, 0.6
 						).set()
 						component.bezierPath.fill()
-						NSColor.colorWithCalibratedRed_green_blue_alpha_(
-							0.9 , 0.0 , 0.3, 0.65
-						).set()
-						#scale = self.getScale()
-						bezierpath = component.bezierPath
-						bezierpath.setLineWidth_(6)
-						bezierpath.stroke()
+						if component not in layer.selection:
+							NSColor.colorWithCalibratedRed_green_blue_alpha_(
+							1.0 , 0.35 , 0.0, 0.75
+							).set()
+							bezierpath = component.bezierPath
+							bezierpath.setLineWidth_(6)
+							bezierpath.stroke()
+					else:
 						textX=component.bounds.origin.x+0.5*component.bounds.size.width
 						textY=component.bounds.origin.y+0.5*component.bounds.size.height
 						currentScale = self.getScale()
@@ -78,6 +70,18 @@ class ShowFlippedComponents(ReporterPlugin):
 								0.55 , 0.51 , 0.48, 0.5
 							),
 						)
+						
+						NSColor.colorWithCalibratedRed_green_blue_alpha_(
+						0.75 , 0.71 , 0.68, 0.6
+						).set()
+						component.bezierPath.fill()
+						if component not in layer.selection:
+							NSColor.colorWithCalibratedRed_green_blue_alpha_(
+							0.9 , 0.0 , 0.3, 0.65
+							).set()
+							bezierpath = component.bezierPath
+							bezierpath.setLineWidth_(6)
+							bezierpath.stroke()
 	def preview(self, layer):
 		NSColor.blackColor().set()
 		if layer.paths:
